@@ -39,6 +39,17 @@ main {
   overflow-x: hidden;
 }
 
+math-field {
+  width: 100%;
+  min-height: 52px;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+math-field::part(container) {
+  min-height: 52px;
+}
+
 button,
 input,
 select {

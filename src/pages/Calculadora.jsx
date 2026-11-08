@@ -49,7 +49,6 @@ const METODOS = [
 
 const crearEstadoInicial = (metodoId) => {
   const base = {
-    nombreFuncion: "Función académica",
     funcion: "x^2 - 2",
     gFuncion: "(x + 2/x) / 2",
     derivada: "2*x",
@@ -187,30 +186,32 @@ export default function Calculadora() {
   const exportarResultado = () => {
     if (!resultado) return;
 
+    const nombreFuncion = metodoActual.label;
+
     if (metodoActivo === "biseccion") {
-      exportarBiseccion(resultado, formulario.nombreFuncion, formulario.funcion, formulario.tolerancia);
+      exportarBiseccion(resultado, nombreFuncion, formulario.funcion, formulario.tolerancia);
       return;
     }
 
     if (metodoActivo === "reglaFalsa") {
-      exportarReglaFalsa(resultado, formulario.nombreFuncion, formulario.funcion, formulario.tolerancia);
+      exportarReglaFalsa(resultado, nombreFuncion, formulario.funcion, formulario.tolerancia);
       return;
     }
 
     if (metodoActivo === "puntoFijo") {
-      exportarPuntoFijo(resultado, formulario.nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
+      exportarPuntoFijo(resultado, nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
       return;
     }
 
     if (metodoActivo === "newtonRaphson") {
-      exportarNewtonRaphson(resultado, formulario.nombreFuncion, formulario.funcion, formulario.derivada, formulario.tolerancia, formulario.x0);
+      exportarNewtonRaphson(resultado, nombreFuncion, formulario.funcion, formulario.derivada, formulario.tolerancia, formulario.x0);
       return;
     }
 
     if (metodoActivo === "newtonRaphsonModificado") {
       exportarNewtonRaphsonModificado(
         resultado,
-        formulario.nombreFuncion,
+        nombreFuncion,
         formulario.funcion,
         formulario.derivada,
         formulario.segundaDerivada,
@@ -220,21 +221,12 @@ export default function Calculadora() {
       return;
     }
 
-    exportarAitkenSteffensen(resultado, formulario.nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
+    exportarAitkenSteffensen(resultado, nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
   };
 
   const renderizarFormulario = () => {
     return (
       <div className="space-y-5">
-        <div>
-          <label className="mb-2 block text-sm font-semibold">Nombre de la función</label>
-          <input
-            value={formulario.nombreFuncion}
-            onChange={actualizarCampo("nombreFuncion")}
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
-          />
-        </div>
-
         {metodoActivo === "biseccion" && <FormularioBiseccion formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "reglaFalsa" && <FormularioReglaFalsa formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "puntoFijo" && <FormularioPuntoFijo formulario={formulario} actualizarCampo={actualizarCampo} />}
