@@ -12,10 +12,13 @@ import {
 
 import { Header } from "../components/layout/Header";
 import { Sidebar } from "../components/layout/Sidebar";
+
 import { FormularioBiseccion } from "../components/biseccion/FormularioBiseccion";
 import { TablaBiseccion } from "../components/biseccion/TablaBiseccion";
 import { FormularioReglaFalsa } from "../components/reglaFalsa/FormularioReglaFalsa";
 import { TablaReglaFalsa } from "../components/reglaFalsa/TablaReglaFalsa";
+import { FormularioSecante } from "../components/secante/FormularioSecante";
+import { TablaSecante } from "../components/secante/TablaSecante";
 import { FormularioPuntoFijo } from "../components/puntoFijo/FormularioPuntoFijo";
 import { TablaPuntoFijo } from "../components/puntoFijo/TablaPuntoFijo";
 import { FormularioNewtonRaphson } from "../components/newtonRaphson/FormularioNewtonRaphson";
@@ -24,11 +27,37 @@ import { FormularioNewtonRaphsonModificado } from "../components/newtonRaphsonMo
 import { TablaNewtonRaphsonModificado } from "../components/newtonRaphsonModificado/TablaNewtonRaphsonModificado";
 import { FormularioAitkenSteffensen } from "../components/aitkenSteffensen/FormularioAitkenSteffensen";
 import { TablaAitkenSteffensen } from "../components/aitkenSteffensen/TablaAitkenSteffensen";
+import { FormularioGaussEliminacion } from "../components/gaussEliminacion/FormularioGaussEliminacion";
+import { TablaGaussEliminacion } from "../components/gaussEliminacion/TablaGaussEliminacion";
+import { FormularioGaussJordan } from "../components/gaussJordan/FormularioGaussJordan";
+import { TablaGaussJordan } from "../components/gaussJordan/TablaGaussJordan";
+import { FormularioJacobi } from "../components/jacobi/FormularioJacobi";
+import { TablaJacobi } from "../components/jacobi/TablaJacobi";
+import { FormularioGaussSeidel } from "../components/gaussSeidel/FormularioGaussSeidel";
+import { TablaGaussSeidel } from "../components/gaussSeidel/TablaGaussSeidel";
+import { FormularioTrapecio } from "../components/trapecio/FormularioTrapecio";
+import { TablaTrapecio } from "../components/trapecio/TablaTrapecio";
+import { FormularioSimpson13 } from "../components/simpson13/FormularioSimpson13";
+import { TablaSimpson13 } from "../components/simpson13/TablaSimpson13";
+import { FormularioSimpson38 } from "../components/simpson38/FormularioSimpson38";
+import { TablaSimpson38 } from "../components/simpson38/TablaSimpson38";
+import { FormularioLagrange } from "../components/lagrange/FormularioLagrange";
+import { TablaLagrange } from "../components/lagrange/TablaLagrange";
+import { FormularioDiferenciasDivididas } from "../components/diferenciasDivididas/FormularioDiferenciasDivididas";
+import { TablaDiferenciasDivididas } from "../components/diferenciasDivididas/TablaDiferenciasDivididas";
+import { FormularioEuler } from "../components/euler/FormularioEuler";
+import { TablaEuler } from "../components/euler/TablaEuler";
+import { FormularioHeun } from "../components/heun/FormularioHeun";
+import { TablaHeun } from "../components/heun/TablaHeun";
+import { FormularioRK4 } from "../components/rk4/FormularioRK4";
+import { TablaRK4 } from "../components/rk4/TablaRK4";
 
 import { calcularBiseccion } from "../methods/biseccion/calcularBiseccion";
 import { exportarBiseccion } from "../methods/biseccion/exportarBiseccion";
 import { calcularReglaFalsa } from "../methods/reglaFalsa/calcularReglaFalsa";
 import { exportarReglaFalsa } from "../methods/reglaFalsa/exportarReglaFalsa";
+import { calcularSecante } from "../methods/secante/calcularSecante";
+import { exportarSecante } from "../methods/secante/exportarSecante";
 import { calcularPuntoFijo } from "../methods/puntoFijo/calcularPuntoFijo";
 import { exportarPuntoFijo } from "../methods/puntoFijo/exportarPuntoFijo";
 import { calcularNewtonRaphson } from "../methods/newtonRaphson/calcularNewtonRaphson";
@@ -37,14 +66,51 @@ import { calcularNewtonRaphsonModificado } from "../methods/newtonRaphsonModific
 import { exportarNewtonRaphsonModificado } from "../methods/newtonRaphsonModificado/exportarNewtonRaphsonModificado";
 import { calcularAitkenSteffensen } from "../methods/aitkenSteffensen/calcularAitkenSteffensen";
 import { exportarAitkenSteffensen } from "../methods/aitkenSteffensen/exportarAitkenSteffensen";
+import { calcularGaussEliminacion } from "../methods/gaussEliminacion/calcularGaussEliminacion";
+import { exportarGaussEliminacion } from "../methods/gaussEliminacion/exportarGaussEliminacion";
+import { calcularGaussJordan } from "../methods/gaussJordan/calcularGaussJordan";
+import { exportarGaussJordan } from "../methods/gaussJordan/exportarGaussJordan";
+import { calcularJacobi } from "../methods/jacobi/calcularJacobi";
+import { exportarJacobi } from "../methods/jacobi/exportarJacobi";
+import { calcularGaussSeidel } from "../methods/gaussSeidel/calcularGaussSeidel";
+import { exportarGaussSeidel } from "../methods/gaussSeidel/exportarGaussSeidel";
+import { calcularTrapecio } from "../methods/trapecio/calcularTrapecio";
+import { exportarTrapecio } from "../methods/trapecio/exportarTrapecio";
+import { calcularSimpson13 } from "../methods/simpson13/calcularSimpson13";
+import { exportarSimpson13 } from "../methods/simpson13/exportarSimpson13";
+import { calcularSimpson38 } from "../methods/simpson38/calcularSimpson38";
+import { exportarSimpson38 } from "../methods/simpson38/exportarSimpson38";
+import { calcularLagrange } from "../methods/lagrange/calcularLagrange";
+import { exportarLagrange } from "../methods/lagrange/exportarLagrange";
+import { calcularDiferenciasDivididas } from "../methods/diferenciasDivididas/calcularDiferenciasDivididas";
+import { exportarDiferenciasDivididas } from "../methods/diferenciasDivididas/exportarDiferenciasDivididas";
+import { calcularEuler } from "../methods/euler/calcularEuler";
+import { exportarEuler } from "../methods/euler/exportarEuler";
+import { calcularHeun } from "../methods/heun/calcularHeun";
+import { exportarHeun } from "../methods/heun/exportarHeun";
+import { calcularRK4 } from "../methods/rk4/calcularRK4";
+import { exportarRK4 } from "../methods/rk4/exportarRK4";
 
 const METODOS = [
   { id: "biseccion", label: "Bisección", description: "Método de intervalos" },
   { id: "reglaFalsa", label: "Regla Falsa", description: "Interpolación lineal" },
+  { id: "secante", label: "Secante", description: "Aproximación secante" },
   { id: "puntoFijo", label: "Punto fijo", description: "Iteración de punto fijo" },
   { id: "newtonRaphson", label: "Newton-Raphson", description: "Tangentes" },
   { id: "newtonRaphsonModificado", label: "Newton-Raphson modificado", description: "Segunda derivada" },
   { id: "aitkenSteffensen", label: "Aitken-Steffensen", description: "Aceleración de convergencia" },
+  { id: "gaussEliminacion", label: "Gauss", description: "Eliminación directa" },
+  { id: "gaussJordan", label: "Gauss-Jordan", description: "Matriz reducida" },
+  { id: "jacobi", label: "Jacobi", description: "Iteración paralela" },
+  { id: "gaussSeidel", label: "Gauss-Seidel", description: "Actualización inmediata" },
+  { id: "trapecio", label: "Trapecio", description: "Integración numérica" },
+  { id: "simpson13", label: "Simpson 1/3", description: "Regla parabólica" },
+  { id: "simpson38", label: "Simpson 3/8", description: "Regla cúbica" },
+  { id: "lagrange", label: "Lagrange", description: "Interpolación polinómica" },
+  { id: "diferenciasDivididas", label: "Diferencias divididas", description: "Newton dividido" },
+  { id: "euler", label: "Euler", description: "EDO de un paso" },
+  { id: "heun", label: "Heun", description: "Euler mejorado" },
+  { id: "rk4", label: "Runge-Kutta 4", description: "EDO de orden 4" },
 ];
 
 const crearEstadoInicial = (metodoId) => {
@@ -53,9 +119,17 @@ const crearEstadoInicial = (metodoId) => {
     gFuncion: "(x + 2/x) / 2",
     derivada: "2*x",
     segundaDerivada: "2",
-    a: "1",
-    b: "2",
+    a: "0",
+    b: "1",
     x0: "1",
+    x1: "2",
+    y0: "1",
+    h: "0.1",
+    n: "10",
+    matrizA: "4 1 -1; 2 5 1; 1 2 4",
+    vectorB: "7; 8; 9",
+    puntos: "0,1; 1,3; 2,9",
+    xObjetivo: "1.5",
     tolerancia: "0.00001",
   };
 
@@ -63,19 +137,49 @@ const crearEstadoInicial = (metodoId) => {
     base.funcion = "";
   }
 
-  if (metodoId === "newtonRaphson") {
+  if (metodoId === "newtonRaphson" || metodoId === "newtonRaphsonModificado") {
     base.funcion = "x^2 - 2";
   }
 
-  if (metodoId === "newtonRaphsonModificado") {
-    base.funcion = "x^2 - 2";
+  if (metodoId === "gaussEliminacion" || metodoId === "gaussJordan" || metodoId === "jacobi" || metodoId === "gaussSeidel") {
+    base.matrizA = "4 1 -1; 2 5 1; 1 2 4";
+    base.vectorB = "7; 8; 9";
+    base.x0 = "0; 0; 0";
+  }
+
+  if (metodoId === "trapecio" || metodoId === "simpson13" || metodoId === "simpson38") {
+    base.funcion = "x^2";
+    base.a = "0";
+    base.b = "1";
+    base.n = "10";
+  }
+
+  if (metodoId === "lagrange" || metodoId === "diferenciasDivididas") {
+    base.puntos = "0,1; 1,3; 2,9";
+    base.xObjetivo = "1.5";
+  }
+
+  if (metodoId === "euler" || metodoId === "heun" || metodoId === "rk4") {
+    base.funcion = "y - x";
+    base.x0 = "0";
+    base.y0 = "1";
+    base.h = "0.1";
+    base.n = "10";
   }
 
   return base;
 };
 
 const formatearNumero = (valor) => {
+  if (Array.isArray(valor)) {
+    return valor.map((item) => formatearNumero(item)).join(", ");
+  }
+
   if (valor === null || valor === undefined) return "—";
+  if (typeof valor === "object") {
+    return JSON.stringify(valor);
+  }
+
   const numero = Number(valor);
   if (!Number.isFinite(numero)) return "—";
   return numero.toLocaleString("en-US", { maximumFractionDigits: 10 });
@@ -118,66 +222,96 @@ export default function Calculadora() {
 
     try {
       if (metodoActivo === "biseccion") {
-        const datos = calcularBiseccion({
-          funcion: formulario.funcion,
-          a: formulario.a,
-          b: formulario.b,
-          tolerancia: formulario.tolerancia,
-        });
-        setResultado(datos);
+        setResultado(calcularBiseccion({ funcion: formulario.funcion, a: formulario.a, b: formulario.b, tolerancia: formulario.tolerancia }));
         return;
       }
 
       if (metodoActivo === "reglaFalsa") {
-        const datos = calcularReglaFalsa({
-          funcion: formulario.funcion,
-          a: formulario.a,
-          b: formulario.b,
-          tolerancia: formulario.tolerancia,
-        });
-        setResultado(datos);
+        setResultado(calcularReglaFalsa({ funcion: formulario.funcion, a: formulario.a, b: formulario.b, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "secante") {
+        setResultado(calcularSecante({ funcion: formulario.funcion, x0: formulario.x0, x1: formulario.x1, tolerancia: formulario.tolerancia }));
         return;
       }
 
       if (metodoActivo === "puntoFijo") {
-        const datos = calcularPuntoFijo({
-          gFuncion: formulario.gFuncion,
-          x0: formulario.x0,
-          tolerancia: formulario.tolerancia,
-        });
-        setResultado(datos);
+        setResultado(calcularPuntoFijo({ gFuncion: formulario.gFuncion, x0: formulario.x0, tolerancia: formulario.tolerancia }));
         return;
       }
 
       if (metodoActivo === "newtonRaphson") {
-        const datos = calcularNewtonRaphson({
-          funcion: formulario.funcion,
-          derivada: formulario.derivada,
-          x0: formulario.x0,
-          tolerancia: formulario.tolerancia,
-        });
-        setResultado(datos);
+        setResultado(calcularNewtonRaphson({ funcion: formulario.funcion, derivada: formulario.derivada, x0: formulario.x0, tolerancia: formulario.tolerancia }));
         return;
       }
 
       if (metodoActivo === "newtonRaphsonModificado") {
-        const datos = calcularNewtonRaphsonModificado({
-          funcion: formulario.funcion,
-          derivada: formulario.derivada,
-          segundaDerivada: formulario.segundaDerivada,
-          x0: formulario.x0,
-          tolerancia: formulario.tolerancia,
-        });
-        setResultado(datos);
+        setResultado(calcularNewtonRaphsonModificado({ funcion: formulario.funcion, derivada: formulario.derivada, segundaDerivada: formulario.segundaDerivada, x0: formulario.x0, tolerancia: formulario.tolerancia }));
         return;
       }
 
-      const datos = calcularAitkenSteffensen({
-        gFuncion: formulario.gFuncion,
-        x0: formulario.x0,
-        tolerancia: formulario.tolerancia,
-      });
-      setResultado(datos);
+      if (metodoActivo === "aitkenSteffensen") {
+        setResultado(calcularAitkenSteffensen({ gFuncion: formulario.gFuncion, x0: formulario.x0, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "gaussEliminacion") {
+        setResultado(calcularGaussEliminacion({ matrizA: formulario.matrizA, vectorB: formulario.vectorB, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "gaussJordan") {
+        setResultado(calcularGaussJordan({ matrizA: formulario.matrizA, vectorB: formulario.vectorB, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "jacobi") {
+        setResultado(calcularJacobi({ matrizA: formulario.matrizA, vectorB: formulario.vectorB, x0: formulario.x0, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "gaussSeidel") {
+        setResultado(calcularGaussSeidel({ matrizA: formulario.matrizA, vectorB: formulario.vectorB, x0: formulario.x0, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "trapecio") {
+        setResultado(calcularTrapecio({ funcion: formulario.funcion, a: formulario.a, b: formulario.b, n: formulario.n, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "simpson13") {
+        setResultado(calcularSimpson13({ funcion: formulario.funcion, a: formulario.a, b: formulario.b, n: formulario.n, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "simpson38") {
+        setResultado(calcularSimpson38({ funcion: formulario.funcion, a: formulario.a, b: formulario.b, n: formulario.n, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "lagrange") {
+        setResultado(calcularLagrange({ puntos: formulario.puntos, xObjetivo: formulario.xObjetivo }));
+        return;
+      }
+
+      if (metodoActivo === "diferenciasDivididas") {
+        setResultado(calcularDiferenciasDivididas({ puntos: formulario.puntos, xObjetivo: formulario.xObjetivo }));
+        return;
+      }
+
+      if (metodoActivo === "euler") {
+        setResultado(calcularEuler({ funcion: formulario.funcion, x0: formulario.x0, y0: formulario.y0, h: formulario.h, n: formulario.n, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      if (metodoActivo === "heun") {
+        setResultado(calcularHeun({ funcion: formulario.funcion, x0: formulario.x0, y0: formulario.y0, h: formulario.h, n: formulario.n, tolerancia: formulario.tolerancia }));
+        return;
+      }
+
+      setResultado(calcularRK4({ funcion: formulario.funcion, x0: formulario.x0, y0: formulario.y0, h: formulario.h, n: formulario.n, tolerancia: formulario.tolerancia }));
     } catch (err) {
       setError(err.message || "Error al ejecutar el método.");
     }
@@ -198,6 +332,11 @@ export default function Calculadora() {
       return;
     }
 
+    if (metodoActivo === "secante") {
+      exportarSecante(resultado, nombreFuncion, formulario.funcion, formulario.tolerancia, formulario.x0, formulario.x1);
+      return;
+    }
+
     if (metodoActivo === "puntoFijo") {
       exportarPuntoFijo(resultado, nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
       return;
@@ -209,19 +348,71 @@ export default function Calculadora() {
     }
 
     if (metodoActivo === "newtonRaphsonModificado") {
-      exportarNewtonRaphsonModificado(
-        resultado,
-        nombreFuncion,
-        formulario.funcion,
-        formulario.derivada,
-        formulario.segundaDerivada,
-        formulario.tolerancia,
-        formulario.x0
-      );
+      exportarNewtonRaphsonModificado(resultado, nombreFuncion, formulario.funcion, formulario.derivada, formulario.segundaDerivada, formulario.tolerancia, formulario.x0);
       return;
     }
 
-    exportarAitkenSteffensen(resultado, nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
+    if (metodoActivo === "aitkenSteffensen") {
+      exportarAitkenSteffensen(resultado, nombreFuncion, formulario.gFuncion, formulario.tolerancia, formulario.x0);
+      return;
+    }
+
+    if (metodoActivo === "gaussEliminacion") {
+      exportarGaussEliminacion(resultado, nombreFuncion, formulario.matrizA, formulario.vectorB);
+      return;
+    }
+
+    if (metodoActivo === "gaussJordan") {
+      exportarGaussJordan(resultado, nombreFuncion, formulario.matrizA, formulario.vectorB);
+      return;
+    }
+
+    if (metodoActivo === "jacobi") {
+      exportarJacobi(resultado, nombreFuncion, formulario.matrizA, formulario.vectorB, formulario.x0);
+      return;
+    }
+
+    if (metodoActivo === "gaussSeidel") {
+      exportarGaussSeidel(resultado, nombreFuncion, formulario.matrizA, formulario.vectorB, formulario.x0);
+      return;
+    }
+
+    if (metodoActivo === "trapecio") {
+      exportarTrapecio(resultado, nombreFuncion, formulario.funcion, formulario.a, formulario.b, formulario.n);
+      return;
+    }
+
+    if (metodoActivo === "simpson13") {
+      exportarSimpson13(resultado, nombreFuncion, formulario.funcion, formulario.a, formulario.b, formulario.n);
+      return;
+    }
+
+    if (metodoActivo === "simpson38") {
+      exportarSimpson38(resultado, nombreFuncion, formulario.funcion, formulario.a, formulario.b, formulario.n);
+      return;
+    }
+
+    if (metodoActivo === "lagrange") {
+      exportarLagrange(resultado, nombreFuncion, formulario.puntos, formulario.xObjetivo);
+      return;
+    }
+
+    if (metodoActivo === "diferenciasDivididas") {
+      exportarDiferenciasDivididas(resultado, nombreFuncion, formulario.puntos, formulario.xObjetivo);
+      return;
+    }
+
+    if (metodoActivo === "euler") {
+      exportarEuler(resultado, nombreFuncion, formulario.funcion, formulario.x0, formulario.y0, formulario.h, formulario.n);
+      return;
+    }
+
+    if (metodoActivo === "heun") {
+      exportarHeun(resultado, nombreFuncion, formulario.funcion, formulario.x0, formulario.y0, formulario.h, formulario.n);
+      return;
+    }
+
+    exportarRK4(resultado, nombreFuncion, formulario.funcion, formulario.x0, formulario.y0, formulario.h, formulario.n);
   };
 
   const renderizarFormulario = () => {
@@ -229,23 +420,40 @@ export default function Calculadora() {
       <div className="space-y-5">
         {metodoActivo === "biseccion" && <FormularioBiseccion formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "reglaFalsa" && <FormularioReglaFalsa formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "secante" && <FormularioSecante formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "puntoFijo" && <FormularioPuntoFijo formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "newtonRaphson" && <FormularioNewtonRaphson formulario={formulario} actualizarCampo={actualizarCampo} />}
         {metodoActivo === "newtonRaphsonModificado" && (
           <FormularioNewtonRaphsonModificado formulario={formulario} actualizarCampo={actualizarCampo} />
         )}
         {metodoActivo === "aitkenSteffensen" && <FormularioAitkenSteffensen formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "gaussEliminacion" && <FormularioGaussEliminacion formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "gaussJordan" && <FormularioGaussJordan formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "jacobi" && <FormularioJacobi formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "gaussSeidel" && <FormularioGaussSeidel formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "trapecio" && <FormularioTrapecio formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "simpson13" && <FormularioSimpson13 formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "simpson38" && <FormularioSimpson38 formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "lagrange" && <FormularioLagrange formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "diferenciasDivididas" && (
+          <FormularioDiferenciasDivididas formulario={formulario} actualizarCampo={actualizarCampo} />
+        )}
+        {metodoActivo === "euler" && <FormularioEuler formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "heun" && <FormularioHeun formulario={formulario} actualizarCampo={actualizarCampo} />}
+        {metodoActivo === "rk4" && <FormularioRK4 formulario={formulario} actualizarCampo={actualizarCampo} />}
 
-        <div>
-          <label className="mb-2 block text-sm font-semibold">Tolerancia</label>
-          <input
-            type="number"
-            step="any"
-            value={formulario.tolerancia}
-            onChange={actualizarCampo("tolerancia")}
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 md:max-w-sm"
-          />
-        </div>
+        {!["gaussEliminacion", "gaussJordan", "jacobi", "gaussSeidel", "lagrange", "diferenciasDivididas"].includes(metodoActivo) && (
+          <div>
+            <label className="mb-2 block text-sm font-semibold">Tolerancia</label>
+            <input
+              type="number"
+              step="any"
+              value={formulario.tolerancia}
+              onChange={actualizarCampo("tolerancia")}
+              className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 md:max-w-sm"
+            />
+          </div>
+        )}
       </div>
     );
   };
@@ -258,6 +466,8 @@ export default function Calculadora() {
         return <TablaBiseccion filas={resultado.filas} />;
       case "reglaFalsa":
         return <TablaReglaFalsa filas={resultado.filas} />;
+      case "secante":
+        return <TablaSecante filas={resultado.filas} />;
       case "puntoFijo":
         return <TablaPuntoFijo filas={resultado.filas} />;
       case "newtonRaphson":
@@ -266,6 +476,30 @@ export default function Calculadora() {
         return <TablaNewtonRaphsonModificado filas={resultado.filas} />;
       case "aitkenSteffensen":
         return <TablaAitkenSteffensen filas={resultado.filas} />;
+      case "gaussEliminacion":
+        return <TablaGaussEliminacion filas={resultado.filas} />;
+      case "gaussJordan":
+        return <TablaGaussJordan filas={resultado.filas} />;
+      case "jacobi":
+        return <TablaJacobi filas={resultado.filas} />;
+      case "gaussSeidel":
+        return <TablaGaussSeidel filas={resultado.filas} />;
+      case "trapecio":
+        return <TablaTrapecio filas={resultado.filas} />;
+      case "simpson13":
+        return <TablaSimpson13 filas={resultado.filas} />;
+      case "simpson38":
+        return <TablaSimpson38 filas={resultado.filas} />;
+      case "lagrange":
+        return <TablaLagrange filas={resultado.filas} />;
+      case "diferenciasDivididas":
+        return <TablaDiferenciasDivididas filas={resultado.filas} />;
+      case "euler":
+        return <TablaEuler filas={resultado.filas} />;
+      case "heun":
+        return <TablaHeun filas={resultado.filas} />;
+      case "rk4":
+        return <TablaRK4 filas={resultado.filas} />;
       default:
         return <TablaBiseccion filas={resultado.filas} />;
     }
@@ -329,7 +563,7 @@ export default function Calculadora() {
             <>
               <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <p className="text-sm text-slate-500">Raíz aproximada</p>
+                  <p className="text-sm text-slate-500">Resultado</p>
                   <p className="mt-2 text-2xl font-bold text-blue-700">{formatearNumero(resultado.raiz)}</p>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
