@@ -12,6 +12,7 @@ import {
 
 import { Header } from "../components/layout/Header";
 import { Sidebar } from "../components/layout/Sidebar";
+import { TeoriaErrores } from "../components/teoriaErrores/TeoriaErrores";
 
 import { FormularioBiseccion } from "../components/biseccion/FormularioBiseccion";
 import { TablaBiseccion } from "../components/biseccion/TablaBiseccion";
@@ -113,6 +114,12 @@ const METODOS = [
   { id: "rk4", label: "Runge-Kutta 4", description: "EDO de orden 4" },
 ];
 
+const SECCION_TEORIA_ERRORES = {
+  id: "teoriaErrores",
+  label: "Teoría de errores",
+  description: "Mediciones e incertidumbre",
+};
+
 const crearEstadoInicial = (metodoId) => {
   const base = {
     funcion: "x^2 - 2",
@@ -193,7 +200,10 @@ export default function Calculadora() {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   const metodoActual = useMemo(
-    () => METODOS.find((metodo) => metodo.id === metodoActivo) ?? METODOS[0],
+    () =>
+      metodoActivo === SECCION_TEORIA_ERRORES.id
+        ? SECCION_TEORIA_ERRORES
+        : METODOS.find((metodo) => metodo.id === metodoActivo) ?? METODOS[0],
     [metodoActivo]
   );
 
@@ -509,6 +519,7 @@ export default function Calculadora() {
     <div className="min-h-screen bg-slate-50 text-slate-800">
       <Sidebar
         metodos={METODOS}
+        seccionSuperior={SECCION_TEORIA_ERRORES}
         metodoActivo={metodoActivo}
         onSeleccionarMetodo={cambiarMetodo}
         menuAbierto={menuAbierto}
@@ -516,8 +527,16 @@ export default function Calculadora() {
       />
 
       <main className="min-h-screen overflow-x-hidden md:ml-72">
-        <Header metodoActual={metodoActual} menuAbierto={menuAbierto} onToggleMenu={setMenuAbierto} />
+        <Header
+          metodoActual={metodoActual}
+          menuAbierto={menuAbierto}
+          onToggleMenu={setMenuAbierto}
+          temaOscuro={metodoActivo === SECCION_TEORIA_ERRORES.id}
+        />
 
+        {metodoActivo === SECCION_TEORIA_ERRORES.id ? (
+          <TeoriaErrores />
+        ) : (
         <div className="mx-auto max-w-7xl space-y-7 p-5 md:p-8">
           <section>
             <div className="flex items-center gap-2 text-sm font-medium text-blue-700">
@@ -610,6 +629,7 @@ export default function Calculadora() {
             </section>
           )}
         </div>
+        )}
       </main>
     </div>
   );

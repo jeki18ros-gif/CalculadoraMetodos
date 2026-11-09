@@ -1,6 +1,6 @@
-import { Calculator, BookOpenText } from "lucide-react";
+import { Calculator, Flame, BookOpenText } from "lucide-react";
 
-export function Sidebar({ metodos, metodoActivo, onSeleccionarMetodo, menuAbierto, onToggleMenu }) {
+export function Sidebar({ metodos, seccionSuperior, metodoActivo, onSeleccionarMetodo, menuAbierto, onToggleMenu }) {
   return (
     <>
       <aside
@@ -21,6 +21,28 @@ export function Sidebar({ metodos, metodoActivo, onSeleccionarMetodo, menuAbiert
 
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
           <nav className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+            <button
+              type="button"
+              onClick={() => {
+                onSeleccionarMetodo(seccionSuperior.id);
+                onToggleMenu(false);
+              }}
+              className={[
+                "flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition-all duration-150",
+                metodoActivo === seccionSuperior.id
+                  ? "border-red-500/40 bg-red-500/10 text-red-200 shadow-inner shadow-red-500/10"
+                  : "border-slate-800 bg-slate-900/60 text-slate-300 hover:border-red-900/70 hover:bg-red-950/30",
+              ].join(" ")}
+            >
+              <span className="rounded-lg bg-red-500/10 p-2 text-red-400">
+                <Flame size={17} />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold">{seccionSuperior.label}</span>
+                <span className="mt-1 block text-xs text-slate-400">{seccionSuperior.description}</span>
+              </span>
+            </button>
+
             <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
               <div className="flex items-center gap-2 text-sm font-medium text-slate-200">
                 <BookOpenText size={16} className="text-blue-400" />
