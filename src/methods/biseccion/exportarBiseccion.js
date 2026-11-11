@@ -1,5 +1,6 @@
 
 import * as XLSX from "xlsx";
+import { expresionExcel, insertarFormulas } from "../exportarExcel.js";
 
 export function exportarBiseccion(
   resultado,
@@ -42,6 +43,33 @@ const hoja = XLSX.utils.aoa_to_sheet([
   encabezados,
   ...datos,
 ]);
+
+  insertarFormulas(hoja, encabezados, datos, 5, ({ numeroFila, indice }) => {
+    const filaAnterior = numeroFila - 1;
+    const funcionEn = (celda) => {
+      const expresion = expresionExcel(funcion, { x: celda });
+      return expresion ? `=${expresion}` : null;
+    };
+
+    return {
+      k: `=ROW()-7`,
+      ...(indice > 0
+        ? {
+            ak: `=IF(E${filaAnterior}*F${filaAnterior}<0,B${filaAnterior},C${filaAnterior})`,
+            bk: `=IF(E${filaAnterior}*F${filaAnterior}<0,C${filaAnterior},D${filaAnterior})`,
+          }
+        : {}),
+      ck: `=(B${numeroFila}+D${numeroFila})/2`,
+      fak: funcionEn(`B${numeroFila}`),
+      fck: funcionEn(`C${numeroFila}`),
+      fbk: funcionEn(`D${numeroFila}`),
+      "fak*fck": `=E${numeroFila}*F${numeroFila}`,
+      ...(indice > 0
+        ? { error: `=IF(C${numeroFila}=0,0,ABS((C${numeroFila}-C${filaAnterior})/C${numeroFila})*100)` }
+        : {}),
+      convergencia: `=IF(F${numeroFila}=0,"converge",IF(I${numeroFila}="", "diverge",IF(I${numeroFila}<=${Number(tolerancia)},"converge","diverge")))`,
+    };
+  });
 
   hoja["!cols"] = [
     { wch: 8 },
